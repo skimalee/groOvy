@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const usersCtrl = require('../controllers/users')
+const postsCtrl = require('../controllers/posts')
 
 /* GET users listing. */
-router.get('/', usersCtrl.index)
+router.get('/', postsCtrl.index)
 
 // router.post('/facts', isLoggedIn, usersCtrl.addFact);
 

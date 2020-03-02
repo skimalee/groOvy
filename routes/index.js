@@ -5,7 +5,7 @@ var passport = require('passport');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log('helloooooo')
-  res.redirect('/users')
+  res.redirect('/posts')
 });
 
 router.get('/auth/google', passport.authenticate(
@@ -16,13 +16,13 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/users',
-    failureRedirect : '/users'
+    successRedirect : '/posts',
+    failureRedirect : '/posts'
   }
 ));
 
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/users');
+  res.redirect('/posts');
 });
 module.exports = router;
