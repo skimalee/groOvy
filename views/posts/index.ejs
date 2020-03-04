@@ -24,28 +24,35 @@
                 </select>
             </label><br><br>
         </div>
-        <input type='submit' value='add groOvy'>
     </form>
+    <input type='submit' value='add groOvy'>
 </div>
 
 <% grooves.forEach(function(g) { %>
 <div class='groove-post'>
-    <h3 class='post-username'><%= g.userId.name %></h3>
+    <div class='user-post'>
+        <h3 class='post-username'><%= g.userId.name %></h3>
+        <div class='timestamp'>
+            <%= String(g.createdAt).substr(3,18) %>  
+        </div>
+    </div>
     <div id='post-schema'> 
-        <label>Artist: <%= String(g.artist).toUpperCase() %></label>
-        <label>Title: <%= String(g.title).toUpperCase() %></label>
-        <label>Genre: <%= g.genre %></label>
+        <label><strong>Artist:</strong> <%= String(g.artist).toUpperCase() %></label>
+        <label><strong>Title:</strong> <%= String(g.title).toUpperCase() %></label>
+        <label><strong>Genre:</strong> <%= g.genre %></label>
+        <button class='listen'>Listen Now!
+            <a href='https://www.google.com/search?q=<%= g.artist %>+<%= g.title %>' target='_blank'></a>
+        </button>
     </div>
-    <div class='timestamp'>
-        <label>Posted:
-            <%= String(g.createdAt).substr(0,25) %>
-        </label>
-    </div>
+
     <% if (user) { %>
         <% if(user._id.toString() == g.userId._id.toString()){ %>
             <div class='edit-n-delete'>
+                <button id='edit-btn'>
+                    <a href='/posts/<%= g._id %>/go-to-edit-page'><img class='edit-icon' src='https://i.imgur.com/Wi8U0EK.png'></a>
+                </button>
                 <form action='/posts/<%= g._id %>?_method=DELETE' class='delete-form' method='POST'>
-                    <button id='orangeBox' type='submit'>x</button>
+                    <button id='delete-btn' type='submit'>x</button>
                 </form>
             </div>
       

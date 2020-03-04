@@ -5,25 +5,32 @@ module.exports = {
   index,
   new: newPost,
   delete: deletePost,
-  edit,
-  grooves
+  grooves,
+  goToEditPage,
+  update
+}
+
+function update(req, res) {
+  Post.findByIdAndUpdate(req.params.postId, req.body, function(err, edit){
+    res.redirect('/posts');
+  })
+}
+
+function goToEditPage(req, res) {
+  Post.findById(req.params.postId, function(err, post) {
+    console.log(post)
+    res.render('posts/edit', {post})
+  })
 }
 
 function grooves(req, res) {
-  res.render('posts/grooves')
-}
-
-function edit(req, res) {
-  Post.findByIdAndUpdate(req.params.id, req.body, function(err, editOne) {
-    res.redirect('/posts')
-  });
+  res.render('/posts/grooves')
 }
 
 function deletePost(req, res) {
   Post.findByIdAndDelete(req.params.id, function(err, deleteOne) {
     res.redirect('/posts')
   });
-
 }
 
 function newPost(req, res) {

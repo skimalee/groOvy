@@ -24,6 +24,10 @@ li {
   list-style: none;
 }
 
+strong {
+  color: black;
+  font-style: bold;
+}
 .home-button > a {
   color: #790979;
   font-size: 32px;
@@ -47,40 +51,25 @@ li {
   font-size: 12px;
 }
 
-.brand-logo {
-  margin-left: 30px;
+#groove-form {
+  padding-left: 20px;
 }
-.card .card-content .card-title {
-  margin-bottom: 10px;
-}
-
-#search-row form {
-  padding-top: 20px;
-}
-
-.student-name {
-  position: relative;
-  top: -5px;
-}
-
-.collection-item form {
-  margin-top: -5px;
-} 
 
 .container {
   margin-top: 150px;
   margin-left: 100px;
   margin-right: 100px;
-
-  background: rgba(5, 48, 48, .75);
-  
+  background: rgba(5, 48, 48, .75); 
 }
+
+
 
 .container,
 .groove-post {
   padding: 20px;
   height: 150px;
-  /* width: 500px; */
+  border-radius: 3px;
+  position: relative;
 }
 
 .groove-post {
@@ -97,6 +86,10 @@ input {
   width: 170px;
 }
 
+.post-username {
+  margin: 0;
+}
+
 .items {
   display: flex;
   flex-direction: row;
@@ -109,36 +102,53 @@ select {
   width: 170px;
 }
 
-#groove-form input[type='submit'] {
+
+.container input[type='submit'],
+.listen input[type='submit'] {
   background:  rgba(121,9,121,1);
   border-color: rgba(121,9,121,1);
-  color: rgb(199, 196, 187) 
+  color: rgb(199, 196, 187);
+  width: 100px;
+  
 }
 
+.container input[type='submit'] {
+  position: absolute;
+  bottom: 20px;
+  right: 50px
+}
 
+.user-post {
+  position: absolute;
+  top: 15px;
+}
 .timestamp {
   font-size: 12px;
-  text-align: right;
-  position: absolute;
-  bottom: 0;
-  right: 0;
+  color: gray;
 }
 
-#orangeBox,
-#edit-form {
-  background: #f90;
-  border-color: #f90;
+#delete-btn {
+  background: #C2123A;
+  border-color: #C2123A;
   color: #fff;
   font-family: 'Helvetica', 'Arial', sans-serif;
-  font-size: 1em;
+  font-size: .75em;
   font-weight: bold;
   text-align: center;
   width: 25px;
   height: 25px;
   border-radius: 5px;
-  text-align: right;
+  text-align: center;
 }
 
+.edit-icon {
+  height: 11px;
+}
+
+#edit-btn {
+  border-radius: 5px;
+  margin-right: 5px;
+}
 .edit-n-delete {
   display: flex;
   flex-direction: row;
@@ -149,18 +159,32 @@ select {
   right: 0;
 }
 
-.post-username {
-  position: absolute;
-  top: 10px;
-  left: 10px;
+
+/* .collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+} */
+
+.active, .collapsible:hover {
+  background-color: #ccc;
 }
 
 #post-schema {
-
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
+  margin-top: 60px;
+  /* position: absolute;
+  top: 50%;
+  left: 20% */
 }
 
 .content {

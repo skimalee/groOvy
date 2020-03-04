@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+    <div class='container'>
+        <form id='groove-form' action='/posts/<%= post._id %>/update' method='POST'>
+            <h4>Edit your groove</h4>
+            <div class='items'>
+                <label>Artist:
+                    <input type='text' name='artist' value='<%= post.artist %>'>
+                </label>
+                <label>Title:
+                    <input type='text' name='title' value='<%= post.title %>'>
+                </label>
+                <label>Genre:
+                    <select name='genre'>
+                        <option value='HIP HOP'>HIP HOP</option>
+                        <option value='R&B'>R&B</option>
+                        <option value='ROCK'>ROCK</option>
+                        <option value='EDM'>EDM</option>
+                        <option value='POP'>POP</option>
+                        <option value='COUNTRY'>COUNTRY</option>
+                        <option value='CLASSICAL'>CLASSICAL</option>
+                        <option value='JAZZ'>JAZZ</option>
+                        <option value='INDIE'>INDIE</option>
+                        <option value='OTHER'>OTHER</option>
+                    </select>
+                </label><br><br>
+            </div>
+            <input type='submit' value='edit'>
+        </form>
