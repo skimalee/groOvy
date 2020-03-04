@@ -51,6 +51,10 @@ strong {
   font-size: 12px;
 }
 
+.brand-logo {
+  margin: 30px;
+}
+
 #groove-form {
   padding-left: 20px;
 }
