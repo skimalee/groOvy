@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 // session middleware
 var session = require('express-session');
 var passport = require('passport');
-// var methodOverride = require('method-override');
+var methodOverride = require('method-override');
 
 // load the env vars
 require('dotenv').config();
@@ -26,22 +26,27 @@ var postsRoutes = require('./routes/posts');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 // mount the session middleware
 app.use(session({
-  secret: 'SEI Rocks!',
+  secret: 'groovy',
   resave: false,
   saveUninitialized: true
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 
 // mount all routes with appropriate base paths

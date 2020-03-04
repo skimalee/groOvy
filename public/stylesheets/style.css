@@ -1,7 +1,55 @@
-.brand-logo {
-  margin-left: 15px;
+body {
+  margin: 0;
+  background: url('https://i.imgur.com/SFcsY3V.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(199, 196, 187)
+}
+.nav-wrapper {
+  background: linear-gradient(90deg, rgba(4,3,31,.75) 50%, rgba(121,9,121,.5) 100%, rgba(0,212,255,1) 100%);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%; 
+  align-items: center;
+  color: white;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
 }
 
+li {
+  list-style: none;
+}
+
+.home-button > a {
+  color: #790979;
+  font-size: 32px;
+  font-family: 'Righteous';
+}
+
+.login {
+  padding: 5px;
+  margin: 0 15px;
+}
+
+.logout {
+  padding: 5px;
+  margin: 0 30px;
+}
+
+.login > a,
+.logout > a {
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+}
+
+.brand-logo {
+  margin-left: 30px;
+}
 .card .card-content .card-title {
   margin-bottom: 10px;
 }
@@ -17,4 +65,108 @@
 
 .collection-item form {
   margin-top: -5px;
+} 
+
+.container {
+  margin-top: 150px;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  background: rgba(5, 48, 48, .75);
+  
+}
+
+.container,
+.groove-post {
+  padding: 20px;
+  height: 150px;
+  /* width: 500px; */
+}
+
+.groove-post {
+  margin: 30px 100px;
+  background: rgba(199, 196, 187, .75); 
+  color: rgba(5, 48, 48, .75);
+  position: relative;
+}
+
+input {
+  border-radius: 5px;
+  height: 1.5rem;
+  border-style: solid;
+  width: 170px;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+}
+
+select {
+  height: 1.5rem;
+  width: 170px;
+}
+
+#groove-form input[type='submit'] {
+  background:  rgba(121,9,121,1);
+  border-color: rgba(121,9,121,1);
+  color: rgb(199, 196, 187) 
+}
+
+
+.timestamp {
+  font-size: 12px;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#orangeBox,
+#edit-form {
+  background: #f90;
+  border-color: #f90;
+  color: #fff;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  text-align: right;
+}
+
+.edit-n-delete {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.post-username {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#post-schema {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }

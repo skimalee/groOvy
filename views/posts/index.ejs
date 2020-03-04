@@ -1,33 +1,64 @@
-<!DOCTYPE html>
-<html>
+<%- include('../partials/header') %>
+<div class='container'>
+    <form id='groove-form' action='/posts' method='POST'>
+        <h4>What's your groove of the day?</h4>
+        <div class='items'>
+            <label>Artist:
+                <input type='text' name='artist'>
+            </label>
+            <label>Title:
+                <input type='text' name='title'>
+            </label>
+            <label>Genre:
+                <select name='genre'>
+                    <option value='HIP HOP'>HIP HOP</option>
+                    <option value='R&B'>R&B</option>
+                    <option value='ROCK'>ROCK</option>
+                    <option value='EDM'>EDM</option>
+                    <option value='POP'>POP</option>
+                    <option value='COUNTRY'>COUNTRY</option>
+                    <option value='CLASSICAL'>CLASSICAL</option>
+                    <option value='JAZZ'>JAZZ</option>
+                    <option value='INDIE'>INDIE</option>
+                    <option value='OTHER'>OTHER</option>
+                </select>
+            </label><br><br>
+        </div>
+        <input type='submit' value='add groOvy'>
+    </form>
+</div>
 
-<head>
-  <title>Song Of The Day</title>
-  <!-- Google Icon Fonts used by Materialize -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Materialize CSS Framework -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="stylesheet" href="stylesheets/style.css" />
-  <!-- JavaScript for Materialize -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
+<% grooves.forEach(function(g) { %>
+<div class='groove-post'>
+    <h3 class='post-username'><%= g.userId.name %></h3>
+    <div id='post-schema'> 
+        <label>Artist: <%= String(g.artist).toUpperCase() %></label>
+        <label>Title: <%= String(g.title).toUpperCase() %></label>
+        <label>Genre: <%= g.genre %></label>
+    </div>
+    <div class='timestamp'>
+        <label>Posted:
+            <%= String(g.createdAt).substr(0,25) %>
+        </label>
+    </div>
+    <% if (user) { %>
+        <% if(user._id.toString() == g.userId._id.toString()){ %>
+            <div class='edit-n-delete'>
+                <form action='/posts/<%= g._id %>?_method=DELETE' class='delete-form' method='POST'>
+                    <button id='orangeBox' type='submit'>x</button>
+                </form>
+            </div>
+      
+        <% }else {%>
+            <div></div>
+        <% } %>
+    <% } else { %>
+        <div></div>
+    <% } %>
 
-<body>
-  <div class="navbar-fixed">
-    <nav>
-      <div class="nav-wrapper">
-        <a href="" class="brand-logo left">Song Of The Day</a>
-        <ul class="right">
-          <li>
-            <% if (user) { %>
-                <a href="/logout"><i class="material-icons left">trending_flat</i>Log Out</a>
-            <% } else { %>
-                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
-            <% } %>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+</div>
+<% }); %>
+
 </body>
+
 </html>
