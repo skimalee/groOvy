@@ -23,7 +23,16 @@ function goToEditPage(req, res) {
 }
 
 function grooves(req, res) {
-  res.render('posts/grooves')
+  User.findById(req.params.id, function(err, users) {
+    Post.find({}).sort('-createdAt')
+      .populate('userId')
+      .exec(function(err, grooves) {
+        res.render('posts/grooves', {
+          users,
+          grooves
+        })
+      })
+  });
 }
 
 function deletePost(req, res) {
@@ -45,19 +54,14 @@ function newPost(req, res) {
 
 
 function index(req, res, next) {
-   let modelQuery = req.query.name ? {name: new RegExp(req.query.name, 'i')} : {};
-   let sortKey = req.query.sort || 'name';
-   User.find(modelQuery)
-   .sort(sortKey).exec(function(err, users) {
-     if (err) return next(err);
-    Post.find({}).sort('-createdAt').populate('userId').exec(function(err, grooves) {
-      res.render('posts/index', {
-         users,
-         user: req.user,
-         name: req.query.name,
-         sortKey,
-         grooves
-       })
-    })
+  User.findById(req.params.id, function(err, users) {
+    Post.find({}).sort('-createdAt')
+      .populate('userId')
+      .exec(function(err, grooves) {
+        res.render('posts/index', {
+          users,
+          grooves
+        })
+      })
   });
 }

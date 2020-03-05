@@ -63,14 +63,16 @@
             </button>
         </div>
         <div class='comment-bar'>
-            <input type='image' id='likes' src='https://i.imgur.com/OelTh8c.png'>
+            <form action='/posts/<%= g._id %>/likes' class='comment-form' method='GET'>
+                <input type='image' id='likes' src='https://i.imgur.com/OelTh8c.png'>
+            </form>
             <form action='/posts/<%= g._id %>/comments' class='comment-form' method='POST'>
                 <input type='text' name='content' class='comments'>
                 <button id='comments-btn' type='submit'>send</button>
             </form>
         </div>
 
-        <button type='button' class='collapsible'>Comment</button>
+        <button class='collapsible'>Comment</button>
         <div class='comment-container'>
         <% if (g.comments.length) { %>
             <% g.comments.forEach(function(comment) { %>

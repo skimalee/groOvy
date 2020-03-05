@@ -23,7 +23,8 @@ const postSchema = new Schema ({
         type: String,
         enum: ['HIP HOP', 'R&B', 'ROCK', 'EDM', 'POP', 'COUNTRY', 'CLASSICAL', 'JAZZ', 'INDIE', 'OTHER']
     },
-    comments: [commentSchema]
+    comments: [commentSchema],
+    likes: [Schema.Types.ObjectId]
     }, {timestamps: true 
 });
 
