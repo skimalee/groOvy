@@ -8,7 +8,7 @@
   <link href='https://fonts.googleapis.com/css?family=Righteous&display=swap' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet'>
   <link rel="stylesheet" href="">
-  <script defer src='/javascripts/main.js'></script>
+  <script defer src='javascripts/main.js'></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         <ul>
         <% if (user) { %>
               <li>
-                <div id='username'><a href='/posts/grooves'><%= user.name %></a></div>
+                <div id='username'><a href='/posts/grooves/<%= user._id %>'><%= user.name %></a></div>
               </li>
               <li>
                 <div class='logout'><a href='/logout'>log out</a></div>

@@ -5,8 +5,14 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: String,
     email: String,
-    posts: [Schema.Types.ObjectId],
-    likes: [Schema.Types.ObjectId],
+    posts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
+    likes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
     googleId: String
 }, {
     timestamps: true

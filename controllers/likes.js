@@ -7,13 +7,20 @@ module.exports = {
 }
 
 function show(req, res) {
-  Post.findById(req.params.id, function(err, post) {
-    const likePost = req.body
-    post.likes.push(likePost)
-    post.save();
-    req.user.likes.push(likePost);
-    req.user.save(function(err) {
-      res.redirect('/posts');
-    })
-  })
+  // Post.findById(req.params.id, function(err, post) {
+  //   const likePost = req.body
+  //   post.likes.push(likePost)
+  //   post.save();
+  //   req.user.likes.push(likePost);
+  //   req.user.save(function(err) {
+  //     res.redirect('/posts');
+  //   })
+  // })
+
+  User.findById(req.params.id, function(err, user) {
+    Post.find({'userId': user._id}).sort('-createdAt')
+      .exec(function(err, grooves) {
+        res.send(user)
+      })
+  });
 }

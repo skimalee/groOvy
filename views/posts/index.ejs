@@ -28,26 +28,24 @@
         </form>
     </div>
 
-<% grooves.forEach(function(g) { %>
+    <% grooves.forEach(function(g) { %>
     <div class='groove-post'>
-        <% if (user) { %>
-            <% if(user._id.toString() == g.userId._id.toString()){ %>
-                <div class='edit-n-delete'>
-                    <button id='edit-btn'>
-                        <a href='/posts/<%= g._id %>/go-to-edit-page'><img class='edit-icon' src='https://i.imgur.com/Wi8U0EK.png'></a>
-                    </button>
-                    <form action='/posts/<%= g._id %>?_method=DELETE' class='delete-form' method='POST'>
-                        <button id='delete-btn' type='submit'>x</button>
-                    </form>
-                </div>
-        
-            <% } else {%>
-                <div></div>
-            <% } %>
-        <% } else { %>
-            <div></div>
-        <% } %>
+     <% if (user) { %>
+        <% if(user._id.toString() == g.userId._id.toString()){ %>
+            <div class='edit-n-delete'>
+                <button id='edit-btn'>
+                    <a href='/posts/<%= g._id %>/go-to-edit-page'><img class='edit-icon' src='https://i.imgur.com/Wi8U0EK.png'></a>
+                </button>
+                <form action='/posts/<%= g._id %>?_method=DELETE' class='delete-form' method='POST'>
+                    <button id='delete-btn' type='submit'>x</button>
+                </form>
+            </div>
+    
+        <% } else {%>
 
+        <% } %>
+    <% } else { %>
+    <% } %>
         <div class='user-post'>
             <h3 class='post-username'><%= g.userId.name %></h3>
             <div class='timestamp'>
@@ -63,37 +61,44 @@
             </button>
         </div>
         <div class='comment-bar'>
-            <form action='/posts/<%= g._id %>/likes' class='comment-likes-form' method='GET'>
-                <input type='image' id='likes' src='https://i.imgur.com/54C9A8i.png'>
-            </form>
-            <form action='/posts/<%= g._id %>/comments' class='comment-input-form' method='POST'>
+            <input type='image' id='likes' src='https://i.imgur.com/54C9A8i.png'>
+            <form action='/posts/<%= g._id %>/comments' class='comment-form' method='POST'>
                 <input type='text' name='content' class='comments'>
                 <button id='comments-btn' type='submit'><img class='send-btn' src='https://i.imgur.com/Jck6LNy.png'></button>
             </form>
         </div>
 
         <button class='collapsible'>Comment</button>
-        <div class='comment-container'>
         <% if (g.comments.length) { %>
+            <div class='content'>
             <% g.comments.forEach(function(comment) { %>
-                <div class='content'>
+       
+                <% allUsers.forEach(u => { %>
+
+                    <% if(comment.userId.toString() == u._id.toString() ) { %>
+                        
+                        <%= u.name%><br>
+
+                    <% }%>
+                <% }) %>
+                <%= String(comment.createdAt).substr(3,18) %>
+
+                <div class='comment-container'>
                     <%= comment.content %>
                     <% if (user) { %>
                         <% if( comment.userId && user._id.toString() == comment.userId.toString()){ %>
                             <form action='/posts/<%= g._id %>/comments?_method=DELETE' class='delete-form' method='POST'>
                                 <button id='comment-delete-btn' type='submit'>x</button>
                             </form> 
-                            <% }else {%>
-                                <div></div>
-                            <% } %>
-                        <% } else { %>
-                            <div></div>
+                        <% } else {%>
                         <% } %>
+                    <% } else { %>
+                    <% } %>
                 </div>     
-                    <% }); %>         
-                <% } else { %>
-                <% } %>  
-        </div>
+            <% }); %>         
+                    <% } else { %>
+            <% } %>  
+            </div>
     <% }); %>
 </body>
 
