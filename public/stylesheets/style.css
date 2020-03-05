@@ -94,7 +94,7 @@ strong {
 
 .groove-post {
   margin: 30px 100px;
-  background: rgba(100, 100, 100, .5);
+  background: rgba(255, 255, 255, .75);
   color: rgba(5, 48, 48, .75);
   position: relative;
 }
@@ -124,8 +124,7 @@ select {
 
 
 .container input[type='submit'],
-.listen input[type='submit'],
-.comments-btn {
+.listen input[type='submit'] {
   background:  rgba(121,9,121,1);
   border-color: rgba(121,9,121,1);
   color: rgb(199, 196, 187);
@@ -135,6 +134,20 @@ select {
   
 }
 
+#comments-btn {
+  height: 30px;
+  width: 30px;
+  border-radius: 10px;
+  background: #7FB3D5;
+  border-color: #7FB3D5;
+  padding: 0;
+}
+
+.send-btn {
+  height: 14px;
+  width: 14px;
+
+}
 
 
 .container input[type='submit'] {
@@ -181,6 +194,12 @@ select {
   right: 5px;
 }
 
+#comment-input-form {
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
 .edit-icon {
   height: 11px;
 }
@@ -198,6 +217,7 @@ select {
   top: 0;
   right: 0;
 }
+
 
 .collapsible {
   background-color: rgba(255,255,255,.01);
@@ -246,6 +266,15 @@ select {
   margin-top: 30px;
 }
 
+.profile-groove-post {
+  width: 300px;
+  height: 400px;
+}
+
+.profile-user-post {
+  width: 300px;
+}
+
 .comment-container {
   padding: 0 18px;
   display: block;
@@ -261,7 +290,7 @@ select {
   align-items: center;
 }
 .comments {
-  border-radius: 20px;
+  border-radius: 10px;
   border-width: 1px;
   color: gray;
   padding-left: 20px;

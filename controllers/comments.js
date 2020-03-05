@@ -10,6 +10,7 @@ function deleteComment(req, res) {
     Post.findById(req.params.id, function(err, post, id) {
         post.comments[id].remove(comment)
             res.redirect('/posts')
+
     });
 }
 

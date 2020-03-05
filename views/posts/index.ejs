@@ -63,12 +63,12 @@
             </button>
         </div>
         <div class='comment-bar'>
-            <form action='/posts/<%= g._id %>/likes' class='comment-form' method='GET'>
-                <input type='image' id='likes' src='https://i.imgur.com/OelTh8c.png'>
+            <form action='/posts/<%= g._id %>/likes' class='comment-likes-form' method='GET'>
+                <input type='image' id='likes' src='https://i.imgur.com/54C9A8i.png'>
             </form>
-            <form action='/posts/<%= g._id %>/comments' class='comment-form' method='POST'>
+            <form action='/posts/<%= g._id %>/comments' class='comment-input-form' method='POST'>
                 <input type='text' name='content' class='comments'>
-                <button id='comments-btn' type='submit'>send</button>
+                <button id='comments-btn' type='submit'><img class='send-btn' src='https://i.imgur.com/Jck6LNy.png'></button>
             </form>
         </div>
 
