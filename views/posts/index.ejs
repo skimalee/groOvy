@@ -1,71 +1,98 @@
 <%- include('../partials/header') %>
-<div class='container'>
-    <form id='groove-form' action='/posts' method='POST'>
-        <h4>What's your groove of the day?</h4>
-        <div class='items'>
-            <label>Artist:
-                <input type='text' name='artist'>
-            </label>
-            <label>Title:
-                <input type='text' name='title'>
-            </label>
-            <label>Genre:
-                <select name='genre'>
-                    <option value='HIP HOP'>HIP HOP</option>
-                    <option value='R&B'>R&B</option>
-                    <option value='ROCK'>ROCK</option>
-                    <option value='EDM'>EDM</option>
-                    <option value='POP'>POP</option>
-                    <option value='COUNTRY'>COUNTRY</option>
-                    <option value='CLASSICAL'>CLASSICAL</option>
-                    <option value='JAZZ'>JAZZ</option>
-                    <option value='INDIE'>INDIE</option>
-                    <option value='OTHER'>OTHER</option>
-                </select>
-            </label><br><br>
-        </div>
-    </form>
-    <input type='submit' value='add groOvy'>
-</div>
+    <div class='container'>
+        <form id='groove-form' action='/posts' method='POST'>
+            <h4>What's your groove of the day?</h4>
+            <div class='items'>
+                <label>Artist:
+                    <input type='text' name='artist'>
+                </label>
+                <label>Title:
+                    <input type='text' name='title'>
+                </label>
+                <label>Genre:
+                    <select name='genre'>
+                        <option value='HIP HOP'>HIP HOP</option>
+                        <option value='R&B'>R&B</option>
+                        <option value='ROCK'>ROCK</option>
+                        <option value='EDM'>EDM</option>
+                        <option value='POP'>POP</option>
+                        <option value='COUNTRY'>COUNTRY</option>
+                        <option value='CLASSICAL'>CLASSICAL</option>
+                        <option value='JAZZ'>JAZZ</option>
+                        <option value='INDIE'>INDIE</option>
+                        <option value='OTHER'>OTHER</option>
+                    </select>
+                </label><br><br>
+            </div>
+            <input type='submit' value='add groOvy'>
+        </form>
+    </div>
 
 <% grooves.forEach(function(g) { %>
-<div class='groove-post'>
-    <div class='user-post'>
-        <h3 class='post-username'><%= g.userId.name %></h3>
-        <div class='timestamp'>
-            <%= String(g.createdAt).substr(3,18) %>  
-        </div>
-    </div>
-    <div id='post-schema'> 
-        <label><strong>Artist:</strong> <%= String(g.artist).toUpperCase() %></label>
-        <label><strong>Title:</strong> <%= String(g.title).toUpperCase() %></label>
-        <label><strong>Genre:</strong> <%= g.genre %></label>
-        <button class='listen'>Listen Now!
-            <a href='https://www.google.com/search?q=<%= g.artist %>+<%= g.title %>' target='_blank'></a>
-        </button>
-    </div>
-
-    <% if (user) { %>
-        <% if(user._id.toString() == g.userId._id.toString()){ %>
-            <div class='edit-n-delete'>
-                <button id='edit-btn'>
-                    <a href='/posts/<%= g._id %>/go-to-edit-page'><img class='edit-icon' src='https://i.imgur.com/Wi8U0EK.png'></a>
-                </button>
-                <form action='/posts/<%= g._id %>?_method=DELETE' class='delete-form' method='POST'>
-                    <button id='delete-btn' type='submit'>x</button>
-                </form>
-            </div>
-      
-        <% }else {%>
+    <div class='groove-post'>
+        <% if (user) { %>
+            <% if(user._id.toString() == g.userId._id.toString()){ %>
+                <div class='edit-n-delete'>
+                    <button id='edit-btn'>
+                        <a href='/posts/<%= g._id %>/go-to-edit-page'><img class='edit-icon' src='https://i.imgur.com/Wi8U0EK.png'></a>
+                    </button>
+                    <form action='/posts/<%= g._id %>?_method=DELETE' class='delete-form' method='POST'>
+                        <button id='delete-btn' type='submit'>x</button>
+                    </form>
+                </div>
+        
+            <% } else {%>
+                <div></div>
+            <% } %>
+        <% } else { %>
             <div></div>
         <% } %>
-    <% } else { %>
-        <div></div>
-    <% } %>
 
-</div>
-<% }); %>
+        <div class='user-post'>
+            <h3 class='post-username'><%= g.userId.name %></h3>
+            <div class='timestamp'>
+                <%= String(g.createdAt).substr(3,18) %>  
+            </div>
+        </div>
+        <div id='post-schema'> 
+            <label><strong>Artist:</strong> <%= String(g.artist).toUpperCase() %></label>
+            <label><strong>Title:</strong> <%= String(g.title).toUpperCase() %></label>
+            <label><strong>Genre:</strong> <%= g.genre %></label>
+            <button class='listen'>
+                <a href='https://www.google.com/search?q=<%= g.artist %>+<%= g.title %>' target='_blank'>Listen Now</a>
+            </button>
+        </div>
+        <div class='comment-bar'>
+            <input type='image' id='likes' src='https://i.imgur.com/OelTh8c.png'>
+            <form action='/posts/<%= g._id %>/comments' class='comment-form' method='POST'>
+                <input type='text' name='content' class='comments'>
+                <button id='comments-btn' type='submit'>send</button>
+            </form>
+        </div>
 
+        <button type='button' class='collapsible'>Comment</button>
+        <div class='comment-container'>
+        <% if (g.comments.length) { %>
+            <% g.comments.forEach(function(comment) { %>
+                <div class='content'>
+                    <%= comment.content %>
+                    <% if (user) { %>
+                        <% if( comment.userId && user._id.toString() == comment.userId.toString()){ %>
+                            <form action='/posts/<%= g._id %>/comments?_method=DELETE' class='delete-form' method='POST'>
+                                <button id='comment-delete-btn' type='submit'>x</button>
+                            </form> 
+                            <% }else {%>
+                                <div></div>
+                            <% } %>
+                        <% } else { %>
+                            <div></div>
+                        <% } %>
+                </div>     
+                    <% }); %>         
+                <% } else { %>
+                <% } %>  
+        </div>
+    <% }); %>
 </body>
 
 </html>

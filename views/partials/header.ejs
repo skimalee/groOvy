@@ -7,19 +7,20 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <link href='https://fonts.googleapis.com/css?family=Righteous&display=swap' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet'>
-
+  <link rel="stylesheet" href="">
+  <script defer src='/javascripts/main.js'></script>
 </head>
 
 <body>
   <div class='navbar-fixed'>
     <nav>
-      <div class='nav-wrapper'>
+      <div id='nav-wrapper'>
         <h1 class='home-button'>
-          <a href='/posts/index' class='brand-logo left'>groOvy</a>
+          <a href='/posts' class='brand-logo'>groOvy</a>
         </h1>
         <ul>
         <% if (user) { %>
-            <li>
+              <li>
                 <div id='username'><a href='/posts/grooves'><%= user.name %></a></div>
               </li>
               <li>
