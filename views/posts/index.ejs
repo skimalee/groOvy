@@ -87,7 +87,7 @@
                     <%= comment.content %>
                     <% if (user) { %>
                         <% if( comment.userId && user._id.toString() == comment.userId.toString()){ %>
-                            <form action='/posts/<%= g._id %>/comments?_method=DELETE' class='delete-form' method='POST'>
+                            <form action='/<%= g._id %>/comments/<%= comment._id %>?_method=DELETE' class='delete-form' method='POST'>
                                 <button id='comment-delete-btn' type='submit'>x</button>
                             </form> 
                         <% } else {%>

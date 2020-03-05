@@ -7,12 +7,14 @@ module.exports = {
 }
 
 function deleteComment(req, res) {
-    Post.findById(req.params.id, function(err, post, id) {
-        post.comments[id].remove(comment)
+    Post.findById(req.params.postsId, function(err, foundPost) {
+        foundPost.comments.remove(req.params.commentsId);
+        foundPost.save(function(err) {
             res.redirect('/posts')
+        })
+    })
+};
 
-    });
-}
 
 function create(req, res) {
     Post.findById(req.params.id, function(err, post) {

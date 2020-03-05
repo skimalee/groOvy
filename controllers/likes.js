@@ -18,9 +18,8 @@ function show(req, res) {
   // })
 
   User.findById(req.params.id, function(err, user) {
-    Post.find({'userId': user._id}).sort('-createdAt')
-      .exec(function(err, grooves) {
-        res.send(user)
+    Post.find({'userId': user._id}, function(err, post) {
+        user.post.push()
       })
   });
 }

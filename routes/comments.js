@@ -5,6 +5,6 @@ const commentsCtrl = require('../controllers/comments')
 /* GET users listing. */
 
 router.post('/posts/:id/comments', commentsCtrl.create),
-router.delete('/posts/:id/comments', commentsCtrl.delete)
+router.delete('/:postsId/comments/:commentsId', commentsCtrl.delete)
 
 module.exports = router;
