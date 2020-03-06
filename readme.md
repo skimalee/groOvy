@@ -11,7 +11,7 @@ Let the groOvy sharing begin.
 ![](https://i.imgur.com/Ax8PrFM.png)
 
 ## Technologies used: 
-Node.js, Mongoose, MongoDB, CSS
+Express.js, Node.js, Mongoose, MongoDB, HTML, CSS
 
 
 ## Planned Next Steps:
