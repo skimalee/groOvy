@@ -109,6 +109,7 @@ input {
 
 .post-username {
   margin: 0;
+  padding-left: 18px;
 }
 
 .items {
@@ -163,7 +164,8 @@ select {
 }
 .timestamp {
   font-size: 12px;
-  color: #555
+  color: #555;
+  padding-left: 18px;
 }
 
 #delete-btn {
@@ -225,11 +227,12 @@ select {
   color: #444;
   cursor: pointer;
   padding: 5px;
-  width: 100px;
+  width: 200px;
   border: none;
-  text-align: center;
   outline: none;
   font-size: 15px;
+  padding-left: 19px;
+  text-align: left;
 }
 
 .active, .collapsible:hover {
@@ -237,7 +240,7 @@ select {
 }
 
 .poster-time {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .comment-container {
@@ -289,9 +292,10 @@ select {
 .content-flex {
   display: flex;
   flex-direction: row;
-  width: 500px;
-  
-
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 5px;
 }
 
 .comment-bar {
