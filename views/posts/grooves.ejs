@@ -1,15 +1,22 @@
 <%- include('../partials/header') %>
-<div class='container'>
-    <form id='groove-form' action='/posts' method='POST'>
+<div class='profile-container'>
+    <form id='profile-groove-form' action='/posts?stay=true' method='POST'>
         <h4>What's your groove of the day?</h4>
-        <div class='items'>
-            <label>Artist:
+        <div class='profile-items'>
+            <div class="profile-items-wrapper">
+                <label>Artist:
+                </label>
                 <input type='text' name='artist'>
-            </label>
-            <label>Title:
+            </div>
+            <div class="profile-items-wrapper">
+                <label>Title:
+                </label>
                 <input type='text' name='title'>
-            </label>
-            <label>Genre:
+            </div>
+                
+            <div class="profile-items-wrapper">
+                <label>Genre:
+                </label>
                 <select name='genre'>
                     <option value='HIP HOP'>HIP HOP</option>
                     <option value='R&B'>R&B</option>
@@ -22,85 +29,92 @@
                     <option value='INDIE'>INDIE</option>
                     <option value='OTHER'>OTHER</option>
                 </select>
-            </label><br><br>
+            </div>
+            <br><br>
         </div>
         <input type='submit' value='add groOvy'>
     </form>
 </div>
-
-<% grooves.forEach(function(g) { %>
-<div class='groove-post'>
-    <% if (user) { %>
-    <% if(user._id.toString() == g.userId._id.toString()){ %>
-    <div class='edit-n-delete'>
-        <button id='edit-btn'>
-            <a href='/posts/<%= g._id %>/go-to-edit-page'><img class='edit-icon'
-                    src='https://i.imgur.com/Wi8U0EK.png'></a>
-        </button>
-        <form action='/posts/<%= g._id %>?_method=DELETE' class='delete-form' method='POST'>
-            <button id='delete-btn' type='submit'>x</button>
-        </form>
-    </div>
-
-    <% } else {%>
-
-    <% } %>
-    <% } else { %>
-    <% } %>
-    <div class='user-post'>
-        <h3 class='post-username'><%= g.userId.name %></h3>
-        <div class='timestamp'>
-            <%= String(g.createdAt).substr(3,18) %>
+<div class="profile-groove-post-container">
+    <% grooves.forEach(function(g) { %>
+    <div class='profile-groove-post'>
+        <% if (user) { %>
+        <% if(user._id.toString() == g.userId._id.toString()){ %>
+        <div class='profile-edit-n-delete'>
+            <button id='edit-btn'>
+                <a href='/posts/<%= g._id %>/go-to-edit-page'><img class='edit-icon'
+                        src='https://i.imgur.com/Wi8U0EK.png'></a>
+            </button>
+            <form action='/posts/<%= g._id %>?stay=true&_method=DELETE' class='delete-form' method='POST'>
+                <button id='delete-btn' type='submit'>x</button>
+            </form>
         </div>
-    </div>
-    <div id='post-schema'>
-        <label><strong>Artist:</strong> <%= String(g.artist).toUpperCase() %></label>
-        <label><strong>Title:</strong> <%= String(g.title).toUpperCase() %></label>
-        <label><strong>Genre:</strong> <%= g.genre %></label>
-        <button class='listen'>
-            <a href='https://www.google.com/search?q=<%= g.artist %>+<%= g.title %>' target='_blank'>Listen Now</a>
-        </button>
-    </div>
-    <div class='comment-bar'>
-        <input type='image' id='likes' src='https://i.imgur.com/54C9A8i.png'>
-        <form action='/posts/<%= g._id %>/comments' class='comment-form' method='POST'>
-            <input type='text' name='content' class='comments'>
-            <button id='comments-btn' type='submit'><img class='send-btn'
-                    src='https://i.imgur.com/Jck6LNy.png'></button>
-        </form>
-    </div>
 
-    <button class='collapsible'>Comment</button>
-    <% if (g.comments.length) { %>
-    <div class='content'>
-        <% g.comments.forEach(function(comment) { %>
-        <div class='content-flex'>
-            <% allUsers.forEach(u => { %>
-            <div class='poster-time'>
-                <% if(comment.userId.toString() == u._id.toString() ) { %>
-                <%= u.name%><br>
-                <% }%>
-                <% }) %>
-                <%= String(comment.createdAt).substr(3,18) %>
-            </div>
-            <div class='comment-container'>
-                <%= comment.content %>
-                <% if (user) { %>
-                <% if( comment.userId && user._id.toString() == comment.userId.toString()){ %>
-                <form action='/posts/<%= g._id %>/comments?_method=DELETE' class='delete-form' method='POST'>
-                    < button id='comment-delete-btn' type='submit'>x</ button>
-                </form>
-                <% } else {%>
-                <% } %>
-                <% } else { %>
-                <% } %>
-            </div>
-        </div>
-        <% }); %>
+        <% } else {%>
+
+        <% } %>
         <% } else { %>
         <% } %>
+        <div class='profile-user-post'>
+            <h3 class='post-username'><%= g.userId.name %></h3>
+            <div class='profile-timestamp'>
+                <%= String(g.createdAt).substr(3,18) %>
+            </div>
+        </div>
+        <div id='profile-post-schema'>
+            <label><strong>Artist:</strong> <%= String(g.artist).toUpperCase() %></label><br>
+            <label><strong>Title:</strong> <%= String(g.title).toUpperCase() %></label><br>
+            <label><strong>Genre:</strong> <%= g.genre %></label><br>
+            <button class='listen'>
+                <a class='listen-btn' href='https://www.google.com/search?q=<%= g.artist %>+<%= g.title %>' target='_blank'>Listen Now</a>
+            </button>
+        </div>
+        <div class='profile-comment-bar'>
+        
+            <form action='/posts/<%= g._id %>/comments?stay=true' class='profile-comment-form' method='POST'>
+                <input type='text' name='content' class='profile-comments'>
+                <button id='comments-btn' type='submit'><img class='send-btn'
+                        src='https://i.imgur.com/Jck6LNy.png'></button>
+            </form>
+        </div>
+
+        <button class='collapsible'><%= g.comments.length %> Comments</button>
+        <div>
+            <% if (g.comments.length) { %>
+            <% g.comments.forEach(function(comment) { %>
+            <div class='content'>
+                <div class='profile-content-flex'>
+                    <div class='profile-poster-time'>
+                        <% allUsers.forEach(u => { %>
+                        <% if(comment.userId.toString() == u._id.toString() ) { %>
+                        <%= u.name%>
+                        <% }%>
+                        <% }) %>
+                        <%= String(comment.createdAt).substr(3,18) %>
+                    </div>
+                    <div class='profile-comment-container'>
+                        <%= comment.content %>
+                        <% if (user) { %>
+                        <% if( comment.userId && user._id.toString() == comment.userId.toString()){ %>
+                        <form action='/<%= g._id %>/comments/<%= comment._id %>?stay=true&_method=DELETE' class='delete-form'
+                            method='POST'>
+                            <button id='comment-delete-btn' type='submit'>x</button>
+                        </form>
+                        <% } else {%>
+                        <% } %>
+                        <% } else { %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+            <% } else { %>
+            <div></div>
+            <% } %>
+        </div>
     </div>
     <% }); %>
-    </body>
+</div>
+</body>
 
-    </html>
+</html>

@@ -21,7 +21,7 @@
         <ul>
         <% if (user) { %>
               <li>
-                <div id='username'><a href='/posts/grooves/<%= user._id %>'><%= user.name %></a></div>
+                <div id='username'><a class='user-profile' href='/posts/grooves/<%= user._id %>'><%= user.name %></a></div>
               </li>
               <li>
                 <div class='logout'><a href='/logout'>log out</a></div>

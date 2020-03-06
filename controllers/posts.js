@@ -40,8 +40,12 @@ function grooves(req, res) {
 
 function deletePost(req, res) {
   Post.findByIdAndDelete(req.params.id, function (err, deleteOne) {
-    res.redirect('/posts')
-  });
+    if (!req.query.stay) {
+      res.redirect('/posts');
+    } else {
+      res.redirect(`/posts/grooves/${req.user._id}`)
+    }
+  })
 }
 
 function newPost(req, res) {
@@ -51,7 +55,11 @@ function newPost(req, res) {
   newPost.save()
   req.user.posts.push(newPost);
   req.user.save(function (err) {
-    res.redirect('/posts');
+    if (!req.query.stay){
+      res.redirect('/posts');
+  } else {
+      res.redirect(`/posts/grooves/${req.user._id}`)
+  }
   });
 }
 

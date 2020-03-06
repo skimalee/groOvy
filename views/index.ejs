@@ -3,33 +3,46 @@
 
 <head>
   <title>groOvy</title>
-  <!-- Google Icon Fonts used by Materialize -->
-  <!-- <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'> -->
-  <!-- Materialize CSS Framework -->
-  <!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'> -->
-  <link rel='stylesheet' href='stylesheets/style.css' />
+
+  <link rel='stylesheet' href='/stylesheets/style.css' />
   <link href='https://fonts.googleapis.com/css?family=Righteous&display=swap' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Roboto&display=swap' rel='stylesheet'>
-  <!-- JavaScript for Materialize -->
-  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script> -->
+  <link rel="stylesheet" href="">
+  <script defer src='javascripts/main.js'></script>
 </head>
 
 <body>
   <div class='navbar-fixed'>
     <nav>
-      <div class='nav-wrapper'>
+      <div id='nav-wrapper'>
         <h1 class='home-button'>
-          <a href='' class='brand-logo left'>groOvy</a>
+          <a href='/posts' class='brand-logo'>groOvy</a>
         </h1>
-        <ul>
-          <li>
-
-                <div class='login'><a class='login' href='/auth/google'>login with google</a></div>
-     
-          </li>
-        </ul>
-      </div>
     </nav>
   </div>
+  <div id='login-groove-form'>
+    <p class='login-page'>let's see what your friend's are groovin` to</p>
+    <ul>
+      <% if (user) { %>
+            <li>
+              <div id='username'><a class='user-profile' href='/posts/grooves/<%= user._id %>'><%= user.name %></a></div>
+            </li>
+            <li>
+              <div class='logout'><a href='/logout'>log out</a></div><br><br>
+            </li>
+          <% } else { %>
+            <li><br><br>
+              <div class='user-login'><a class='user-login' href='/auth/google'>login with google</a></div>
+            </li>
+          <% } %>
+        
+      </ul>
+ 
+  </div>
+  
 </body>
 </html>
+
+
+
+  

@@ -21,6 +21,16 @@ body {
   z-index: 1;
 }
 
+.login-page {
+  font-size: 20px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.user-profile {
+  text-decoration: none;
+  color: white;
+}
 
 ul {
   display: flex;
@@ -64,6 +74,11 @@ strong {
   padding: 30px;
 }
 
+p {
+  font-size: 12px;
+  margin-bottom: 0;
+  margin-left: 80px;
+}
 .home-button {
   padding-left: 10px
 }
@@ -76,7 +91,7 @@ strong {
   margin-top: 150px;
   margin-left: 100px;
   margin-right: 100px;
-  background: rgba(5, 48, 48, .75);
+  background: rgba(8, 121, 121, 0.75);
   border-radius: 3px;
   position: relative;
   padding: 20px;
@@ -105,6 +120,8 @@ input {
   height: 1.5rem;
   border-style: solid;
   width: 170px;
+  color: gray;
+  border-width: 1px;
 }
 
 .post-username {
@@ -126,14 +143,37 @@ select {
 
 
 .container input[type='submit'],
-.listen input[type='submit'] {
+.listen {
   background:  rgba(121,9,121,1);
   border-color: rgba(121,9,121,1);
   color: rgb(199, 196, 187);
-  width: 100px;
+  width: 75px;
+  height: 25px;
   border-radius: 5px;
   border-style: solid;
-  
+}
+
+.user-login {
+  background:  rgba(121,9,121,1);
+  border-color: rgba(121,9,121,1);
+  color: rgb(199, 196, 187);
+  width: 75px;
+  height: 50px;
+  border-radius: 5px;
+  border-style: solid;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 1px;
+}
+
+.listen-btn {
+  text-decoration: none;
+  color: white;
 }
 
 #comments-btn {
@@ -243,6 +283,13 @@ select {
   font-size: 11px;
 }
 
+#likes {
+  height: 23px;
+  width: 23px;
+  border: none;
+  padding-right: 5px;
+}
+
 .comment-container {
   margin: 5px;
   padding: 5px;
@@ -255,34 +302,173 @@ select {
 }
 
 .profile-container {
-  width: 300px;
-  height: 400px;
-  margin: 100px;
-  background: rgba(5, 48, 48, .75);
-  border-radius: 3px;
-  position: relative;
-  padding: 20px;
   position: fixed;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
+#login-groove-form {
+  width: 300px;
+  height: 300px;
+  margin-top: 110px;
+  margin-left: 30%;
+  background: rgba(8, 121, 121, 0.75);
+  border-radius: 3px;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+#profile-groove-form {
+  width: 300px;
+  height: 300px;
+  margin-top: 110px;
+  background: rgba(8, 121, 121, 0.75);
+  border-radius: 3px;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+}
 .profile-items {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-content: center;
   align-items: center;
   margin-top: 30px;
+  width: 90%;
+}
+
+.profile-items-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-items-wrapper > label {
+  min-width: 60px;
+}
+
+.profile-items-wrapper > input, .profile-items-wrapper > select {
+  width: 100%;
+}
+
+.profile-groove-post-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-top: 110px;
 }
 
 .profile-groove-post {
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  margin: 30px 100px;
+  margin-top: 0;
+  background: rgba(255, 255, 255, .75);
+  color: rgba(5, 48, 48, .75);
+  border-radius: 3px;
+}
+
+
+.profile-edit-n-delete {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.profile-timestamp {
+  font-size: 12px;
+  color: #555;
+  margin-right: 10px;
+  margin: 0;
+  padding-left: 30px;
+}
+
+#profile-post-schema {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+#profile-post-schema:last-child {
+  justify-content: flex-end;
+}
+
+button.listen {
+  justify-content: flex-end;
+  align-self: flex-end;
 }
 
 .profile-user-post {
   width: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
+.profile-comment-bar {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  margin-left: 20px;
+  padding-right: 5px;
+}
+
+.profile-comment-form {
+  display: flex;
+  flex-direction: row;
+}
+.profile-comments {
+  margin-right: 5px;
+  border-width: 1px;
+  width: 300px;
+}
+
+.profile-content-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.profile-poster-time {
+  font-size: 10px;
+
+}
+.profile-comment-container {
+  margin: 5px;
+  padding: 5px;
+  background: white;
+  border-radius: 5px;
+  width: 350px;
+  font-size: 10px;
+  margin: 5px auto;
+  position: relative;
+}
 .content {
   padding: 0 18px;
   display: block;
@@ -306,22 +492,23 @@ select {
   align-items: center;
 }
 .comments {
-  border-radius: 10px;
+  border-radius: 5px;
   border-width: 1px;
   color: gray;
   padding-left: 20px;
-  margin: 20px;
-  width: 550px;
+  margin: 10px;
+  width: 600px;
 }
 
 .user-comments {
   background: white;
 }
 
-#likes {
+#profile-likes {
   height: 20px;
   width: 20px;
   border: none;
+  padding-right: 5px;
 }
 
 #post-schema {

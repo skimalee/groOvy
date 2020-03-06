@@ -58,11 +58,11 @@
         <label><strong>Title:</strong> <%= String(g.title).toUpperCase() %></label>
         <label><strong>Genre:</strong> <%= g.genre %></label>
         <button class='listen'>
-            <a href='https://www.google.com/search?q=<%= g.artist %>+<%= g.title %>' target='_blank'>Listen Now</a>
+            <a class='listen-btn' href='https://www.google.com/search?q=<%= g.artist %>+<%= g.title %>' target='_blank'>Listen Now</a>
         </button>
     </div>
+    <p>You feelin` the vibes?</p>
     <div class='comment-bar'>
-        <input type='image' id='likes' src='https://i.imgur.com/54C9A8i.png'>
         <form action='/posts/<%= g._id %>/comments' class='comment-form' method='POST'>
             <input type='text' name='content' class='comments'>
             <button id='comments-btn' type='submit'><img class='send-btn'
