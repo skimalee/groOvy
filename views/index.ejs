@@ -12,35 +12,32 @@
 </head>
 
 <body>
-  <div class='navbar-fixed'>
-    <nav>
-      <div id='nav-wrapper'>
-        <h1 class='home-button'>
-          <a href='/posts' class='brand-logo'>groOvy</a>
-        </h1>
-    </nav>
+  <div id='nav-wrapper'>
+      <h1 class='home-button'>
+        <a href='/posts' class='brand-logo'>groOvy</a>
+      </h1>
   </div>
-  <div id='login-groove-form'>
-    <p class='login-page'>let's see what your friend's are groovin` to</p>
-    <ul>
-      <% if (user) { %>
-            <li>
-              <div id='username'><a class='user-profile' href='/posts/grooves/<%= user._id %>'><%= user.name %></a></div>
-            </li>
-            <li>
-              <div class='logout'><a href='/logout'>log out</a></div><br><br>
-            </li>
-          <% } else { %>
-            <li><br><br>
-              <div class='user-login'><a class='user-login' href='/auth/google'>login with google</a></div>
-            </li>
-          <% } %>
-        
+  <div class="login-container">
+    <div id='login-groove-form'>
+      <p class='login-page'>let's see what your friend's are groovin` to</p>
+      <ul>
+        <% if (user) { %>
+          <li>
+            <div id='username'><a class='user-profile' href='/posts/grooves/<%= user._id %>'><%= user.name %></a></div>
+          </li>
+          <li>
+            <div class='logout'><a href='/logout'>log out</a></div><br><br>
+          </li>
+        <% } else { %>
+          <li>
+            <div class='user-login'><a class='user-login' href='/auth/google'>login with google</a></div>
+          </li>
+        <% } %>     
       </ul>
- 
+    </div>
   </div>
-  
 </body>
+
 </html>
 
 

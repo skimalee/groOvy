@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   background: url('https://i.imgur.com/SFcsY3V.jpg');
@@ -5,7 +9,11 @@ body {
   background-attachment: fixed;
   font-family: 'Roboto', sans-serif;
   color: rgb(199, 196, 187);
-  height: 100%
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 #nav-wrapper {
   background: linear-gradient(90deg, rgba(4,3,31,.75) 50%, rgba(121,9,121,.5) 100%, rgba(0,212,255,1) 100%);
@@ -15,8 +23,7 @@ body {
   width: 100%; 
   align-items: center;
   color: white;
-  position: fixed;
-  top: 0;
+  position: relative;
   width: 100%;
   z-index: 1;
 }
@@ -36,6 +43,7 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0;
 }
 
 li {
@@ -67,6 +75,15 @@ strong {
   text-decoration: none;
   color: white;
   font-size: 12px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .brand-logo {
@@ -312,8 +329,6 @@ select {
 #login-groove-form {
   width: 300px;
   height: 300px;
-  margin-top: 110px;
-  margin-left: 30%;
   background: rgba(8, 121, 121, 0.75);
   border-radius: 3px;
   padding: 50px;
